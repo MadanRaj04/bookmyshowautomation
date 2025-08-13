@@ -1,0 +1,29 @@
+name: BookMyShow Booking (every 10 min)
+
+on:
+  schedule:
+    - cron: "*/6 * * * *"   # every 10 minutes (UTC)
+  workflow_dispatch:         # allow manual run from the Actions tab
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bookmyshow-bql
+  cancel-in-progress: true   # prevents overlapping runs if one is still executing
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5       # guardrail: auto-cancel if it hangs
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20   # built-in fetch, no node-fetch needed
+
+      - name: Run script
+        run: node testcinema.js
