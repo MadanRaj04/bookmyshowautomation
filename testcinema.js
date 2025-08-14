@@ -32,7 +32,7 @@ async function runBookingMutation() {
           sessionId: "5845",
           numberOfTickets: 7,
           ticketCategory: "0004",
-          selectedSeats: "|7|0000000003|4|1|041|0000000003|4|1|042|0000000003|4|2|041|0000000003|4|2|042|0000000003|4|2|043|0000000003|4|2|044|0000000003|4|2|045|",
+          selectedSeats: "|7|0000000003|4|2|041|0000000003|4|2|042|0000000003|4|2|043|0000000003|4|2|044|0000000003|4|1|041|0000000003|4|1|042|0000000003|4|3|042|",
           bmsId: "1.735942063.1755102313168",
           token: "67x1xa33b4x422b361ba",
           seatLayoutType: "Y",
@@ -58,3 +58,4 @@ async function runBookingMutation() {
 }
 
 runBookingMutation().catch(console.error);
+
